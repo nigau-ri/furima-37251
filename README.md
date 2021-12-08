@@ -64,4 +64,4 @@
 
 ### Association
 
-- has_one :order
+- belongs_to :order
