@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :sales_status
+  belongs_to :shipping_fee_status
   has_one_attached :image
 
   with_options presence: true do
