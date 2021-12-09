@@ -10,12 +10,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save && @item.image.attached?
+    if @item.save
       redirect_to root_path
     else
-      unless @item.image.attached?
-        @item.errors.add(:image, "can't be blank")
-      end
       render :new
     end
   end
