@@ -29,17 +29,17 @@ RSpec.describe OrderAddress, type: :model do
       it '郵便番号はハイフンなしでは購入できない' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-). Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-). Input half-width digit')
       end
       it '郵便番号が全角では購入できない' do
         @order_address.postal_code = '１２３-４５６７'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-). Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-). Input half-width digit')
       end
       it '郵便番号は数字以外が含まれていると購入できない' do
         @order_address.postal_code = '123-456a'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-). Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-). Input half-width digit')
       end
       it '都道府県が空では購入できない' do
         @order_address.prefecture_id = ''
@@ -64,27 +64,27 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号にハイフンが含まれていると購入できない' do
         @order_address.phone_number = '090-1234-1234'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Do not include hyphen(-) Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Do not include hyphen(-) Input half-width digit')
       end
       it '電話番号が全角では購入できない' do
         @order_address.phone_number = '０９０１２３４１２３４'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Do not include hyphen(-) Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Do not include hyphen(-) Input half-width digit')
       end
       it '電話番号は数字以外が含まれていると購入できない' do
         @order_address.phone_number = '0901234abcd'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Do not include hyphen(-) Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Do not include hyphen(-) Input half-width digit')
       end
       it '電話番号が9桁以下では購入できない' do
         @order_address.phone_number = '090123456'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Do not include hyphen(-) Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Do not include hyphen(-) Input half-width digit')
       end
       it '電話番号が12桁以上では購入できない' do
         @order_address.phone_number = '090123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Do not include hyphen(-) Input half-width digit")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Do not include hyphen(-) Input half-width digit')
       end
       it 'userが空では購入できない' do
         @order_address.user_id = ''
@@ -104,4 +104,3 @@ RSpec.describe OrderAddress, type: :model do
     end
   end
 end
-
