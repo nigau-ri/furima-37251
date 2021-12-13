@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     if @item.user.id == current_user.id
       redirect_root
     else
-      redirect_root unless Order.find(@item.id).empty?
+      redirect_root if Order.exists?(item_id: @item.id)
       @order_address = OrderAddress.new
     end
   end
