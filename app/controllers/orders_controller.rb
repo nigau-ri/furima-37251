@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_item
 
   def index
+    user_auth unless Order.find(@item.id).empty?
     @order_address = OrderAddress.new
   end
 
@@ -24,6 +25,10 @@ class OrdersController < ApplicationController
 
   def set_item 
     @item = Item.find(params[:item_id])
+  end
+
+  def user_auth
+    redirect_to root_path unless @item.user.id == current_user.id
   end
 
   def pay_item
