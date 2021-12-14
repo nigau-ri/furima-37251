@@ -25,6 +25,8 @@ function pay() {
         document.getElementById('card-cvc').removeAttribute('name');
 
         chargeForm.submit();
+      } else {
+        alert('クレジットカードの情報が正しくありません');
       }
     });
   });
