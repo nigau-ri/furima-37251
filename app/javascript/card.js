@@ -27,10 +27,8 @@ function pay() {
       } else {
         alert('クレジットカードの情報が正しくありません');
       }
+      chargeForm.submit();  
     });
-    
-    chargeForm.submit();
-
   });
 }
 
