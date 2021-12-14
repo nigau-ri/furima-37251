@@ -24,11 +24,13 @@ function pay() {
         document.getElementById('card-exp-year').removeAttribute('name');
         document.getElementById('card-cvc').removeAttribute('name');
 
-        chargeForm.submit();
       } else {
         alert('クレジットカードの情報が正しくありません');
       }
     });
+    
+    chargeForm.submit();
+
   });
 }
 
