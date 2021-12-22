@@ -14,13 +14,13 @@ class Item < ApplicationRecord
     validates :name, length: { maximum: 40 }
     validates :price,
               numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
-                              message: 'is invalid' }
+                              message: 'が登録できません' }
     validates :info, length: { maximum: 1000 }
-    validates :category_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :sales_status_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :shipping_fee_status_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
-    validates :scheduled_delivery_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :category_id, numericality: { other_than: 0, message: "を入力してください" }
+    validates :sales_status_id, numericality: { other_than: 0, message: "を入力してください" }
+    validates :shipping_fee_status_id, numericality: { other_than: 0, message: "を入力してください" }
+    validates :prefecture_id, numericality: { other_than: 0, message: "を入力してください" }
+    validates :scheduled_delivery_id, numericality: { other_than: 0, message: "を入力してください" }
     validates :image
   end
 end
