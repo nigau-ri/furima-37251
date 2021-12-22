@@ -1,10 +1,12 @@
 function pay() {
+  const chargeForm = document.getElementById('charge-form');
+  if (!chargeForm) return null;
+
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const submit = document.getElementById('button');
   submit.addEventListener('click', (e)=>{
     e.preventDefault();
 
-    const chargeForm = document.getElementById('charge-form');
     const formData = new FormData(chargeForm);
     const card = {
       number:         formData.get("order_address[number]"),

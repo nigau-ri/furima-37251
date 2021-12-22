@@ -1,5 +1,8 @@
 function price() {
   const itemPrice = document.getElementById('item-price');
+  if (!itemPrice) return null;
+
+
   itemPrice.addEventListener('keyup', ()=>{
     const addTaxPrice = document.getElementById('add-tax-price');
     const profit = document.getElementById('profit');

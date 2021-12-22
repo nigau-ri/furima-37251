@@ -1,4 +1,5 @@
 function preview() {
+
   const postImage = document.getElementById('item-image');
   if (!postImage) return null;
   
