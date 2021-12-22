@@ -8,12 +8,12 @@ class OrderAddress
     validates :item_id
 
     validates :postal_code,
-              format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-). Input half-width digit' }
-    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+              format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'が登録できません。半角数字で入力してください。ハイフン(-)が必要です。' }
+    validates :prefecture_id, numericality: { other_than: 0, message: "を入力してください。" }
     validates :city
     validates :addresses
     validates :phone_number,
-              format: { with: /\A[0-9]{10,11}\z/, message: 'is invalid. Do not include hyphen(-) Input half-width digit' }
+              format: { with: /\A[0-9]{10,11}\z/, message: 'が登録できません。半角数字で入力してください。ハイフン(-)を入力しないでください。' }
   end
 
   def order_save
