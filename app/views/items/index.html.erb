@@ -2,10 +2,23 @@
 <div class='main'>
 
 <%= search_form_for @q, url: items_path, html: {id: "detailed-search-form"} do |f| %>
+  <p>絞り込み</p>
   <div class="search-field">
-    <%= f.label :name_cont %>
+    <%= f.label :name %>
     <br>
-    <%= f.text_field :name_cont, placeholder: '商品名' %>
+    <%= f.text_field :name, placeholder: '商品名', value: params[:q]&.dig(:name) %>
+  </div>
+  <div class="search-field">
+    <%= f.label :category_id_eq %>
+    <br>
+    <%= f.collection_select :category_id_eq, Category.all, :id, :name, {include_blank: '---'} %>
+  </div>
+  <div class="search-field">
+    <%= f.label :price_gteq, '価格' %>
+    <br>
+    <%= f.number_field :price_gteq %> 円以上
+    <br>
+    <%= f.number_field :price_lteq %> 円以下
   </div>
   <%= f.submit '検索' %>
 <% end %>
