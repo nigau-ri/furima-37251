@@ -12,7 +12,14 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
+      <li>
+        <%= search_form_for @q, url: items_path, html: {class: "category-list"} do |f| %>
+            <%= f.label :category_id_eq, 'カテゴリー' %>
+            <br>
+            <%= f.collection_select :category_id_eq, Category.all, :id, :name, {include_blank: '---'}, class: 'hidden' %>
+        <% end %>
+      </li>
+      
       <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
     </ul>
     <ul class='lists-right'>
