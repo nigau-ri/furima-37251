@@ -3,9 +3,10 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :user_auth, only: [:edit, :update, :destroy]
   before_action :was_purchased?, only: [:edit, :update, :destroy]
+  before_action :set_q
 
   def index
-    @items = Item.includes(:user).order('created_at DESC')
+    @items = @q.result.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -57,5 +58,13 @@ class ItemsController < ApplicationController
 
   def was_purchased?
     redirect_to root_path if Order.exists?(item_id: @item.id)
+  end
+
+  def set_q
+    if params[:q]&.dig(:name)
+      squished_keywords = params[:q][:name].squish
+      params[:q][:name_cont_any] = squished_keywords.split(' ')
+    end
+    @q = Item.ransack(params[:q])
   end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'items#index'
+  root 'home#top'
   resources :items do
     resources :orders, only: [:index, :create]
   end
