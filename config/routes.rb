@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'home#top'
   resources :items do
     resources :orders, only: [:index, :create]
+    resources :comments
   end
 end
