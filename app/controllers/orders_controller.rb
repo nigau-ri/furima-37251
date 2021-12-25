@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
+  before_action :card_registration?
 
   def index
     if @item.user.id == current_user.id
@@ -45,5 +46,9 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def card_registration?
+    redirect_to new_user_card_path(current_user) unless current_user.cards.present?
   end
 end
