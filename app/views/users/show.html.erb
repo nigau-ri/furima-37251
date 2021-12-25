@@ -15,7 +15,28 @@
   </div>
   <h1><%= @user.nickname %>さんのページ</h1>
   <%= link_to 'カードを登録する', new_user_card_path(current_user) %>
+  <div class="Card__title">
+    <h2>カード情報</h2>
+    <% if @card.present? %>
+      <div class="Card_info">
+        【カード番号】
+        <br>
+        <%= "**** **** **** " + @card[:last4] %>
+        <br>
+        【有効期限】
+        <br>
+        <%= @card[:exp_month] %>
+        /
+        <%= @card[:exp_year] %>
+      </div>
+    <% else %>
+      <div class="Card_info">
+        カードは登録されていません
+      </div>
+    <% end %>
+  </div>
 </header>
+
 
 
 

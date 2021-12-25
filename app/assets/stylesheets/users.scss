@@ -1,3 +1,13 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.Card__title {
+  margin-top: 20px;
+  .Card_info{
+    padding: 10px;
+    background-color: rgb(247, 222, 226);
+    width: 300px;
+    margin: 20px;
+  }
+}
